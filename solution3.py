@@ -2,7 +2,6 @@
 """
 Spyder Editor
 
-Created on Tue Aug 21 16:30:18 2020
 @author: admin
 
 """
