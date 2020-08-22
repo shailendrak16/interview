@@ -2,7 +2,9 @@
 """
 Spyder Editor
 
-This is a temporary script file.
+Created on Tue Aug 21 16:30:18 2020
+@author: admin
+
 """
 
 import pandas as pd
