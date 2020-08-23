@@ -19,7 +19,7 @@ def parameter_initialization(layers_dimensions):
     for i in range(1, L):           
         parameters["W" + str(i)] = np.random.randn(
             layers_dimensions[i], layers_dimensions[i - 1]) * 0.01
-        parameters["b" + str(i)] = np.random.randn((layers_dimensions[i], 1))*0.01
+        parameters["b" + str(i)] = np.random.randn(layers_dimensions[i], 1)*0.01
 
     return parameters
 
@@ -268,12 +268,20 @@ def multilayer_neuralnetwork(
 input_features = np.array([[1,0,0,1],[1,0,0,0],[0,0,1,1],
  [0,1,0,0],[1,1,0,0],[0,0,1,1],
  [0,0,0,1],[0,0,1,0]])
+# Reshaping our input so each column is one example :
+
+input_features = input_features.reshape(8, -1).T
+
 
 target_output = np.array([[1,1,0,0,1,1,0,0]])
+target_output = target_output.reshape(-1, 8)
+
 # Reshaping our target output into vector :
-target_output = target_output.reshape(8,1)
 print(target_output.shape)
 
-layers_dimensions = [input_features.shape[0], 6, 6, 1]  # 3 layer nueral network,  2 hidden layer and 1 output layer
+layers_dimensions = [input_features.shape[0], 5, 5, 1]  # 3 layer nueral network,  2 hidden layer and 1 output layer
 
+training_relu = multilayer_neuralnetwork(
+    input_features, target_output, layers_dimensions, learning_rate=0.03, epoch=3000,
+    hidden_layers_activation_fn="relu")
 
